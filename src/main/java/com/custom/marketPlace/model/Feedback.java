@@ -23,19 +23,19 @@ import java.util.UUID;
 public class Feedback {
 
     @Id
-    @Column(name = ColumnNames.FEEDBACK_ID, nullable = false)
+    @Column(name = ColumnNames.ID, nullable = false)
     @Type(type = AnnotationType.UUID_CHAR_TYPE)
     private UUID id;
 
     @Column(name = ColumnNames.MESSAGE, length = 1024)
     private String message;
 
-    @Column(name = ColumnNames.RATE)
-    private Double rate;
-
     @OneToMany
     @ToString.Exclude
     private List<Commentary> commentaries;
+
+    @Column(name = ColumnNames.RATE)
+    private Double rate;
 
     @Override
     public boolean equals(Object o) {

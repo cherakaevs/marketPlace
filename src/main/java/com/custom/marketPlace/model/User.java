@@ -1,5 +1,3 @@
-
-
 package com.custom.marketPlace.model;
 
 import com.custom.marketPlace.constants.AnnotationType;
