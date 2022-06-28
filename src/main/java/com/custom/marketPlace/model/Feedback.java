@@ -8,7 +8,6 @@ import org.hibernate.Hibernate;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -30,12 +29,13 @@ public class Feedback {
     @Column(name = ColumnNames.MESSAGE, length = 1024)
     private String message;
 
-    @OneToMany
-    @ToString.Exclude
-    private List<Commentary> commentaries;
-
     @Column(name = ColumnNames.RATE)
     private Double rate;
+
+    @ManyToOne
+    @ToString.Exclude
+    @JoinColumn(name = ColumnNames.PROFILE_ID, nullable = false)
+    private Profile profile;
 
     @Override
     public boolean equals(Object o) {

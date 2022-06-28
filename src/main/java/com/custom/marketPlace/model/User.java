@@ -36,7 +36,7 @@ public class User {
     private String passwordConfirm;
 
     @OneToOne
-    @PrimaryKeyJoinColumn
+    @MapsId
     private Profile profile;
 
     @Override

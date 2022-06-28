@@ -24,7 +24,6 @@ public interface ColumnNames {
 
     /* Parameter */
     String PARAMETER_NAME = "parameter";
-    String PARAMETER_VALUE = "param_value";
 
     /* Product */
     String PRODUCT_NAME = "product_name";
@@ -46,9 +45,6 @@ public interface ColumnNames {
     String DISCOUNT_MULTIPLIER = "discount_multiplier";
     String DISCOUNT = "discount";
 
-    /* Commentary */
-    String COMMENTARY_MESSAGE = "message";
-
     /* Order */
     String SHIPMENT_DATE = "shipment_date";
     String DELIVERY_DATE = "delivery_date";
@@ -58,15 +54,12 @@ public interface ColumnNames {
     String POSSIBLE_VALUES = "possible_values";
 
     /* Foreign keys */
-    String USER_ID = "user_id";
     String CATEGORY_ID = "category_id";
     String ATTRIBUTE_ID = "attribute_id";
     String PRODUCT_ID = "product_id";
-    String PARAMETER_ID = "parameter_id";
-    String FEEDBACK_ID = "feedback_id";
-    String COMMENTARY_ID = "commentary_id";
     String ORDER_ID = "order_id";
     String PROFILE_ID = "profile_id";
+    String ADDRESS_ID = "address_id";
     String BUCKET_ID = "bucket_id";
     String COUPON_ID = "coupon_id";
 }

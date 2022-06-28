@@ -9,13 +9,15 @@ public interface TableNames {
     String COUPON = "coupon";
     String PRODUCT = "product";
     String BUCKET = "bucket";
-    String COMMENTARY = "commentary";
     String ATTRIBUTE = "attribute";
     String PARAMETER = "parameter";
-    String ORDER = "order";
+    String ORDER = "order_table";
 
     /* Mediation */
     String CATEGORY_ATTRIBUTES = "category_attributes";
-    String CATEGORY_PRODUCTS = "category_products";
-    String PRODUCT_PARAMETERS = "product_parameters";
+    String ADDRESSES_PROFILES = "addresses_profiles";
+    String PRODUCTS_ORDERS = "products_orders";
+    String PRODUCTS_BUCKETS = "buckets_products";
+    String PRODUCTS_COUPONS = "products_coupons";
+    String CATEGORIES_COUPONS = "categories_coupons";
 }

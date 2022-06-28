@@ -35,11 +35,25 @@ public class Coupon {
     @Column(name = ColumnNames.DISCOUNT)
     private Double discount;
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(name = TableNames.CATEGORIES_COUPONS,
+            joinColumns = {
+                    @JoinColumn(name = ColumnNames.COUPON_ID, referencedColumnName = ColumnNames.ID,
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = ColumnNames.CATEGORY_ID, referencedColumnName = ColumnNames.ID,
+                            nullable = false, updatable = false)})
     @ToString.Exclude
     private List<Category> categories;
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(name = TableNames.PRODUCTS_COUPONS,
+            joinColumns = {
+                    @JoinColumn(name = ColumnNames.COUPON_ID, referencedColumnName = ColumnNames.ID,
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = ColumnNames.PRODUCT_ID, referencedColumnName = ColumnNames.ID,
+                            nullable = false, updatable = false)})
     @ToString.Exclude
     private List<Product> products;
 

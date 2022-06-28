@@ -39,16 +39,14 @@ public class Product {
     private Category category;
 
     @OneToMany
+    @JoinColumn(name = ColumnNames.PRODUCT_ID)
     @ToString.Exclude
     private List<Parameter> parameters = new ArrayList<>();
 
     @OneToMany
+    @JoinColumn(name = ColumnNames.PRODUCT_ID)
     @ToString.Exclude
     private List<Feedback> feedbacks = new ArrayList<>();
-
-    @OneToMany
-    @ToString.Exclude
-    private List<Commentary> comments = new ArrayList<>();
 
     @Column(name = ColumnNames.AVERAGE_RATE)
     private Double averageRate;
@@ -56,20 +54,16 @@ public class Product {
     @Column(name = ColumnNames.AVAILABLE_COUNT)
     private Integer availableCount;
 
-//    @ManyToOne
-//    @JoinColumn(name = ColumnNames.BUCKET_ID, nullable = false)
-//    @ToString.Exclude
-//    private Bucket bucket;
-//
-//    @ManyToOne
-//    @JoinColumn(name = ColumnNames.COUPON_ID, nullable = false)
-//    @ToString.Exclude
-//    private Coupon coupon;
-//
-//    @ManyToOne
-//    @JoinColumn(name = ColumnNames.ORDER_ID, nullable = false)
-//    @ToString.Exclude
-//    private Order order;
+    @ManyToMany
+    @JoinTable(name = TableNames.PRODUCTS_ORDERS,
+            joinColumns = {
+                    @JoinColumn(name = ColumnNames.PRODUCT_ID, referencedColumnName = ColumnNames.ID,
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = ColumnNames.ORDER_ID, referencedColumnName = ColumnNames.ID,
+                            nullable = false, updatable = false)})
+    @ToString.Exclude
+    private List<Order> orders;
 
     public double getAverageRate(){
         Double sum = 0.0;

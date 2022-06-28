@@ -22,12 +22,20 @@ import java.util.UUID;
 @ToString
 @Builder
 public class Bucket {
+
     @Id
     @Column(name = ColumnNames.ID, nullable = false)
     @Type(type = AnnotationType.UUID_CHAR_TYPE)
     private UUID id;
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(name = TableNames.PRODUCTS_BUCKETS,
+            joinColumns = {
+                    @JoinColumn(name = ColumnNames.BUCKET_ID, referencedColumnName = ColumnNames.ID,
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = ColumnNames.PRODUCT_ID, referencedColumnName = ColumnNames.ID,
+                            nullable = false, updatable = false)})
     @ToString.Exclude
     private List<Product> products = new ArrayList<>();
 
@@ -35,8 +43,6 @@ public class Bucket {
     private Double sumPrice;
 
     @OneToOne
-    @JoinColumn(name = ColumnNames.PROFILE_ID,
-                referencedColumnName = ColumnNames.ID)
     private Profile customer;
 
     @Override

@@ -5,7 +5,6 @@ import com.custom.marketPlace.constants.ColumnNames;
 import com.custom.marketPlace.constants.TableNames;
 import com.custom.marketPlace.enums.Status;
 import lombok.*;
-import org.aspectj.weaver.ast.Or;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.Type;
 
@@ -33,7 +32,14 @@ public class Order {
     @Column(name = ColumnNames.STATUS, nullable = false)
     private Status status;
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(name = TableNames.PRODUCTS_ORDERS,
+            joinColumns = {
+                    @JoinColumn(name = ColumnNames.ORDER_ID, referencedColumnName = ColumnNames.ID,
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = ColumnNames.PRODUCT_ID, referencedColumnName = ColumnNames.ID,
+                            nullable = false, updatable = false)})
     @ToString.Exclude
     private List<Product> products = new ArrayList<>();
 
@@ -42,8 +48,9 @@ public class Order {
     @JoinColumn(name = ColumnNames.PROFILE_ID)
     private Profile customer;
 
-    @OneToOne
+    @ManyToOne
     @ToString.Exclude
+    @JoinColumn(name = ColumnNames.ADDRESS_ID)
     private Address address;
 
     @Column(name = ColumnNames.SUM, nullable = false)

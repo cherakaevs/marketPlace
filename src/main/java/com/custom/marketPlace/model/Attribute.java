@@ -32,10 +32,12 @@ public class Attribute {
 
     @ManyToMany
     @JoinTable(name = TableNames.CATEGORY_ATTRIBUTES,
-            joinColumns = @JoinColumn(
-                    name = ColumnNames.ATTRIBUTE_ID,
-                    referencedColumnName = ColumnNames.CATEGORY_ID
-            ))
+            joinColumns = {
+                    @JoinColumn(name = ColumnNames.ATTRIBUTE_ID, referencedColumnName = ColumnNames.ID,
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = ColumnNames.CATEGORY_ID, referencedColumnName = ColumnNames.ID,
+                            nullable = false, updatable = false)})
     @ToString.Exclude
     private List<Category> category;
 
