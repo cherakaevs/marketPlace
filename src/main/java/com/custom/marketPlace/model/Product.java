@@ -1,9 +1,11 @@
 package com.custom.marketPlace.model;
 
+import com.custom.marketPlace.constants.AnnotationType;
 import com.custom.marketPlace.constants.ColumnNames;
 import com.custom.marketPlace.constants.TableNames;
 import lombok.*;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -22,6 +24,7 @@ import java.util.UUID;
 public class Product {
     @Id
     @Column(name = ColumnNames.ID, nullable = false)
+    @Type(type = AnnotationType.UUID_CHAR_TYPE)
     private UUID id;
 
     @Column(name = ColumnNames.PRODUCT_NAME, nullable = false)

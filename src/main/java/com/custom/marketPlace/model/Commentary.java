@@ -1,9 +1,11 @@
 package com.custom.marketPlace.model;
 
+import com.custom.marketPlace.constants.AnnotationType;
 import com.custom.marketPlace.constants.ColumnNames;
 import com.custom.marketPlace.constants.TableNames;
 import lombok.*;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -20,6 +22,7 @@ import java.util.UUID;
 public class Commentary {
     @Id
     @Column(name = ColumnNames.ID, nullable = false)
+    @Type(type = AnnotationType.UUID_CHAR_TYPE)
     private UUID id;
 
     @Column(name = ColumnNames.COMMENTARY_MESSAGE, nullable = false)

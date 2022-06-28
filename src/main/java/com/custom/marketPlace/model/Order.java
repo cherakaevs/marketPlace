@@ -1,11 +1,13 @@
 package com.custom.marketPlace.model;
 
+import com.custom.marketPlace.constants.AnnotationType;
 import com.custom.marketPlace.constants.ColumnNames;
 import com.custom.marketPlace.constants.TableNames;
 import com.custom.marketPlace.enums.Status;
 import lombok.*;
 import org.aspectj.weaver.ast.Or;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -25,6 +27,7 @@ import java.util.UUID;
 public class Order {
     @Id
     @Column(name = ColumnNames.ID, nullable = false)
+    @Type(type = AnnotationType.UUID_CHAR_TYPE)
     private UUID id;
 
     @Column(name = ColumnNames.STATUS, nullable = false)

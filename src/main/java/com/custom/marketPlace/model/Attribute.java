@@ -1,12 +1,15 @@
 package com.custom.marketPlace.model;
 
+import com.custom.marketPlace.constants.AnnotationType;
 import com.custom.marketPlace.constants.ColumnNames;
 import com.custom.marketPlace.constants.TableNames;
 import com.custom.marketPlace.enums.PossibleValues;
 import lombok.*;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -21,14 +24,20 @@ import java.util.UUID;
 public class Attribute {
     @Id
     @Column(name = ColumnNames.ID, nullable = false)
+    @Type(type = AnnotationType.UUID_CHAR_TYPE)
     private UUID id;
 
     @Column(name = ColumnNames.ATTRIBUTE_NAME, nullable = false)
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = ColumnNames.CATEGORY_ID, nullable = false)
-    private Category category;
+    @ManyToMany
+    @JoinTable(name = TableNames.CATEGORY_ATTRIBUTES,
+            joinColumns = @JoinColumn(
+                    name = ColumnNames.ATTRIBUTE_ID,
+                    referencedColumnName = ColumnNames.CATEGORY_ID
+            ))
+    @ToString.Exclude
+    private List<Category> category;
 
     @Column(name = ColumnNames.POSSIBLE_VALUES, nullable = false)
     private PossibleValues values;
