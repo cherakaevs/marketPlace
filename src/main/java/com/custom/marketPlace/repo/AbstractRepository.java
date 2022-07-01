@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
 import java.util.UUID;
 
 @Repository
@@ -13,7 +14,6 @@ public abstract class AbstractRepository<ObjectClass extends BaseEntity> impleme
 
     protected final EntityManager em;
 
-    @Autowired
     public AbstractRepository(EntityManager em) {
         this.em = em;
     }
@@ -32,7 +32,8 @@ public abstract class AbstractRepository<ObjectClass extends BaseEntity> impleme
             em.merge(objectInContext);
             return;
         }
-        throw new RuntimeException("Could not update entity in database: object is detached");
+        // TODO: Create our own exceptions
+        throw new PersistenceException("Could not update entity in database: object is detached");
     }
 
     @Override
@@ -43,7 +44,8 @@ public abstract class AbstractRepository<ObjectClass extends BaseEntity> impleme
             em.remove(objectInContext);
             return;
         }
-        throw new RuntimeException("Could not remove entity from database: object is detached");
+        // TODO: Create our own exceptions
+        throw new PersistenceException("Could not remove entity from database: object is detached");
     }
 
     @Override
