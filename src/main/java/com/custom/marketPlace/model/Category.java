@@ -23,11 +23,6 @@ import java.util.UUID;
 @Builder
 public class Category extends BaseEntity {
 
-    @Id
-    @Column(name = ColumnNames.ID, nullable = false)
-    @Type(type = AnnotationType.UUID_CHAR_TYPE)
-    private UUID id;
-
     @Column(name = ColumnNames.CATEGORY_NAME)
     private String name;
 

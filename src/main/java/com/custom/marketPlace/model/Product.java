@@ -22,10 +22,6 @@ import java.util.UUID;
 @ToString
 @Builder
 public class Product extends BaseEntity {
-    @Id
-    @Column(name = ColumnNames.ID, nullable = false)
-    @Type(type = AnnotationType.UUID_CHAR_TYPE)
-    private UUID id;
 
     @Column(name = ColumnNames.PRODUCT_NAME, nullable = false)
     private String name;

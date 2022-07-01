@@ -23,11 +23,6 @@ import java.util.UUID;
 @Builder
 public class Coupon extends BaseEntity {
 
-    @Id
-    @Column(name = ColumnNames.ID, nullable = false)
-    @Type(type = AnnotationType.UUID_CHAR_TYPE)
-    private UUID id;
-
     @Column(name = ColumnNames.DISCOUNT_MULTIPLIER)
     @NumberFormat(style = NumberFormat.Style.PERCENT)
     private Double discountMultiplier;

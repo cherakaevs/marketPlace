@@ -23,11 +23,6 @@ import java.util.UUID;
 @Builder
 public class Bucket extends BaseEntity {
 
-    @Id
-    @Column(name = ColumnNames.ID, nullable = false)
-    @Type(type = AnnotationType.UUID_CHAR_TYPE)
-    private UUID id;
-
     @ManyToMany
     @JoinTable(name = TableNames.PRODUCTS_BUCKETS,
             joinColumns = {

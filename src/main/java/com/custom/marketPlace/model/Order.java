@@ -24,10 +24,6 @@ import java.util.UUID;
 @ToString
 @Builder
 public class Order extends BaseEntity {
-    @Id
-    @Column(name = ColumnNames.ID, nullable = false)
-    @Type(type = AnnotationType.UUID_CHAR_TYPE)
-    private UUID id;
 
     @Column(name = ColumnNames.STATUS, nullable = false)
     private Status status;

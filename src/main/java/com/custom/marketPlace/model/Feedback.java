@@ -21,11 +21,6 @@ import java.util.UUID;
 @Builder
 public class Feedback extends BaseEntity {
 
-    @Id
-    @Column(name = ColumnNames.ID, nullable = false)
-    @Type(type = AnnotationType.UUID_CHAR_TYPE)
-    private UUID id;
-
     @Column(name = ColumnNames.MESSAGE, length = 1024)
     private String message;
 

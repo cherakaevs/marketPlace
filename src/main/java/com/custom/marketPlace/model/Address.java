@@ -24,11 +24,6 @@ import java.util.UUID;
 @Builder
 public class Address extends BaseEntity {
 
-    @Id
-    @Column(name = ColumnNames.ID, nullable = false)
-    @Type(type = AnnotationType.UUID_CHAR_TYPE)
-    private UUID id;
-
     @Column(name = ColumnNames.COUNTRY)
     private String country;
 

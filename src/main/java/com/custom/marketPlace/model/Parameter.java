@@ -20,10 +20,6 @@ import java.util.UUID;
 @ToString
 @Builder
 public class Parameter extends BaseEntity {
-    @Id
-    @Column(name = ColumnNames.ID, nullable = false)
-    @Type(type = AnnotationType.UUID_CHAR_TYPE)
-    private UUID id;
 
     @OneToOne
     @JoinColumn(name = ColumnNames.ATTRIBUTE_ID, nullable = false)
