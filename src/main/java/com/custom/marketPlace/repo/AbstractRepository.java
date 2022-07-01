@@ -1,15 +1,12 @@
 package com.custom.marketPlace.repo;
 
 import com.custom.marketPlace.model.BaseEntity;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import java.util.UUID;
 
-@Repository
 public abstract class AbstractRepository<ObjectClass extends BaseEntity> implements IRepository<ObjectClass> {
 
     protected final EntityManager em;
