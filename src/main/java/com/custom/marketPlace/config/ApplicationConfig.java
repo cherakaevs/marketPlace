@@ -57,7 +57,7 @@ public class ApplicationConfig {
         Properties jpaProperties = new Properties();
         jpaProperties.put(HibernateProps.AUTO_DDL_EXECUTION, jpaPolicy);
         jpaProperties.put(HibernateProps.SHOW_DDL_LOG, jpaLogs);
-        jpaProperties.put("hibernate.dialect", POSTGRES_DIALECT);
+        jpaProperties.put(HibernateProps.DIALECT, POSTGRES_DIALECT);
         em.setJpaProperties(jpaProperties);
 
         return em;

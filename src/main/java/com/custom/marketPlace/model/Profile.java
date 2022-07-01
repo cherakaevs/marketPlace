@@ -60,8 +60,8 @@ public class Profile extends BaseEntity {
     private List<Feedback> feedbacks;
 
     @ToString.Exclude
-    @OneToOne
-    @PrimaryKeyJoinColumn(name = ColumnNames.ID, referencedColumnName = ColumnNames.ID)
+    @OneToOne(optional = false)
+    @JoinColumn (name=ColumnNames.USER_ID)
     private User user;
 
     @ToString.Exclude

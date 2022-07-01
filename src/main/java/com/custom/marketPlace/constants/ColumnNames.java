@@ -62,4 +62,5 @@ public interface ColumnNames {
     String ADDRESS_ID = "address_id";
     String BUCKET_ID = "bucket_id";
     String COUPON_ID = "coupon_id";
+    String USER_ID = "user_id";
 }

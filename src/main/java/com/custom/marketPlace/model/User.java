@@ -1,6 +1,7 @@
 package com.custom.marketPlace.model;
 
 import com.custom.marketPlace.constants.ColumnNames;
+import com.custom.marketPlace.constants.MappedByFields;
 import com.custom.marketPlace.constants.TableNames;
 import lombok.*;
 import org.hibernate.Hibernate;
@@ -27,7 +28,7 @@ public class User extends BaseEntity {
     @Transient
     private String passwordConfirm;
 
-    @OneToOne
+    @OneToOne(mappedBy = MappedByFields.USER)
     private Profile profile;
 
     @Override
