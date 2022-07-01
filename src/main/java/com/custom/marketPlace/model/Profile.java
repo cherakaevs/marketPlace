@@ -20,13 +20,9 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Profile {
+public class Profile extends BaseEntity {
 
-    @Id
-    @Type(type = AnnotationType.UUID_CHAR_TYPE)
-    private UUID id;
-
-    @Column(name = ColumnNames.FIRST_NAME, nullable = false)
+    @Column(name = ColumnNames.FIRST_NAME)
     private String firstName;
 
     @Column(name = ColumnNames.LAST_NAME)
@@ -64,12 +60,12 @@ public class Profile {
     private List<Feedback> feedbacks;
 
     @ToString.Exclude
-    @OneToOne(optional = false)
+    @OneToOne
     @PrimaryKeyJoinColumn(name = ColumnNames.ID, referencedColumnName = ColumnNames.ID)
     private User user;
 
     @ToString.Exclude
-    @OneToOne(optional = false)
+    @OneToOne
     @PrimaryKeyJoinColumn(name = ColumnNames.ID, referencedColumnName = ColumnNames.ID)
     private Bucket bucket;
 
