@@ -28,7 +28,6 @@ public class User extends BaseEntity {
     private String passwordConfirm;
 
     @OneToOne
-    @MapsId
     private Profile profile;
 
     @Override

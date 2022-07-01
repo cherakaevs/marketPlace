@@ -21,7 +21,7 @@ import java.util.UUID;
 @Setter
 @ToString
 @Builder
-public class Product {
+public class Product extends BaseEntity {
     @Id
     @Column(name = ColumnNames.ID, nullable = false)
     @Type(type = AnnotationType.UUID_CHAR_TYPE)

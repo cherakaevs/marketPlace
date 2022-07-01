@@ -22,7 +22,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Address {
+public class Address extends BaseEntity {
 
     @Id
     @Column(name = ColumnNames.ID, nullable = false)

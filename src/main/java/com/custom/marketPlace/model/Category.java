@@ -21,7 +21,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Category {
+public class Category extends BaseEntity {
 
     @Id
     @Column(name = ColumnNames.ID, nullable = false)

@@ -21,7 +21,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @ToString
 @Builder
-public class Attribute {
+public class Attribute extends BaseEntity {
     @Id
     @Column(name = ColumnNames.ID, nullable = false)
     @Type(type = AnnotationType.UUID_CHAR_TYPE)

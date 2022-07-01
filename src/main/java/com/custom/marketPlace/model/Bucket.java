@@ -21,7 +21,7 @@ import java.util.UUID;
 @Setter
 @ToString
 @Builder
-public class Bucket {
+public class Bucket extends BaseEntity {
 
     @Id
     @Column(name = ColumnNames.ID, nullable = false)

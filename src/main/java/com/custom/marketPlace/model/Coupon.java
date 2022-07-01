@@ -21,7 +21,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Coupon {
+public class Coupon extends BaseEntity {
 
     @Id
     @Column(name = ColumnNames.ID, nullable = false)

@@ -23,7 +23,7 @@ import java.util.UUID;
 @Setter
 @ToString
 @Builder
-public class Order {
+public class Order extends BaseEntity {
     @Id
     @Column(name = ColumnNames.ID, nullable = false)
     @Type(type = AnnotationType.UUID_CHAR_TYPE)

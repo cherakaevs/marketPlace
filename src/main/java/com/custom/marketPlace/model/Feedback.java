@@ -19,7 +19,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Feedback {
+public class Feedback extends BaseEntity {
 
     @Id
     @Column(name = ColumnNames.ID, nullable = false)

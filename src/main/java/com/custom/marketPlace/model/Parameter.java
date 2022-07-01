@@ -19,7 +19,7 @@ import java.util.UUID;
 @Setter
 @ToString
 @Builder
-public class Parameter {
+public class Parameter extends BaseEntity {
     @Id
     @Column(name = ColumnNames.ID, nullable = false)
     @Type(type = AnnotationType.UUID_CHAR_TYPE)
