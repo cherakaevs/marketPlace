@@ -5,13 +5,14 @@ import com.custom.marketPlace.model.User;
 import com.custom.marketPlace.repo.IRepository;
 import com.custom.marketPlace.services.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service(Qualifiers.USER_SERVICE)
 public class UserService extends AbstractService<User> {
 
     @Autowired
-    public UserService(IRepository<User> repository) {
+    public UserService(@Qualifier(Qualifiers.USER_REPO) IRepository<User> repository) {
         super(repository);
     }
 }

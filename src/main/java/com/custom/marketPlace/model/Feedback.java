@@ -1,15 +1,12 @@
 package com.custom.marketPlace.model;
 
-import com.custom.marketPlace.constants.AnnotationType;
 import com.custom.marketPlace.constants.ColumnNames;
 import com.custom.marketPlace.constants.TableNames;
 import lombok.*;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Objects;
-import java.util.UUID;
 
 @Entity
 @Table(name = TableNames.FEEDBACK)
@@ -20,12 +17,18 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 public class Feedback extends BaseEntity {
+    private static final int MAX_MESSAGE_LENGTH = 1024;
 
-    @Column(name = ColumnNames.MESSAGE, length = 1024)
+    @Column(name = ColumnNames.MESSAGE, length = MAX_MESSAGE_LENGTH)
     private String message;
 
-    @Column(name = ColumnNames.RATE)
+    @Column(name = ColumnNames.RATE, nullable = false)
     private Double rate;
+
+    @ManyToOne
+    @ToString.Exclude
+    @JoinColumn(name = ColumnNames.PRODUCT_ID, nullable = false)
+    private Product product;
 
     @ManyToOne
     @ToString.Exclude

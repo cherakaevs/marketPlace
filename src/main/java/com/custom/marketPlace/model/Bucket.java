@@ -37,8 +37,9 @@ public class Bucket extends BaseEntity {
     @Column(name = ColumnNames.SUM, nullable = false)
     private Double sumPrice;
 
-    @OneToOne
-    private Profile customer;
+    @OneToOne(optional = false)
+    @JoinColumn(name = ColumnNames.PROFILE_ID)
+    private Profile profile;
 
     @Override
     public boolean equals(Object o){

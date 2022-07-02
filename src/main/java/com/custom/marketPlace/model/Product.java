@@ -50,17 +50,6 @@ public class Product extends BaseEntity {
     @Column(name = ColumnNames.AVAILABLE_COUNT)
     private Integer availableCount;
 
-    @ManyToMany
-    @JoinTable(name = TableNames.PRODUCTS_ORDERS,
-            joinColumns = {
-                    @JoinColumn(name = ColumnNames.PRODUCT_ID, referencedColumnName = ColumnNames.ID,
-                            nullable = false, updatable = false)},
-            inverseJoinColumns = {
-                    @JoinColumn(name = ColumnNames.ORDER_ID, referencedColumnName = ColumnNames.ID,
-                            nullable = false, updatable = false)})
-    @ToString.Exclude
-    private List<Order> orders;
-
     public double getAverageRate(){
         Double sum = 0.0;
         for (Feedback feedback:

@@ -2,6 +2,7 @@ package com.custom.marketPlace.model;
 
 import com.custom.marketPlace.constants.AnnotationType;
 import com.custom.marketPlace.constants.ColumnNames;
+import com.custom.marketPlace.constants.MappedByFields;
 import com.custom.marketPlace.constants.TableNames;
 import lombok.*;
 import org.hibernate.Hibernate;
@@ -22,10 +23,10 @@ import java.util.UUID;
 @Builder
 public class Profile extends BaseEntity {
 
-    @Column(name = ColumnNames.FIRST_NAME)
+    @Column(name = ColumnNames.FIRST_NAME, nullable = false)
     private String firstName;
 
-    @Column(name = ColumnNames.LAST_NAME)
+    @Column(name = ColumnNames.LAST_NAME, nullable = false)
     private String lastName;
 
     @OneToMany
@@ -65,8 +66,7 @@ public class Profile extends BaseEntity {
     private User user;
 
     @ToString.Exclude
-    @OneToOne
-    @PrimaryKeyJoinColumn(name = ColumnNames.ID, referencedColumnName = ColumnNames.ID)
+    @OneToOne(mappedBy = MappedByFields.PROFILE)
     private Bucket bucket;
 
     @Override

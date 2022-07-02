@@ -19,5 +19,4 @@ public interface TableNames {
     String PRODUCTS_ORDERS = "products_orders";
     String PRODUCTS_BUCKETS = "buckets_products";
     String PRODUCTS_COUPONS = "products_coupons";
-    String CATEGORIES_COUPONS = "categories_coupons";
 }

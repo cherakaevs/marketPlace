@@ -31,17 +31,6 @@ public class Coupon extends BaseEntity {
     private Double discount;
 
     @ManyToMany
-    @JoinTable(name = TableNames.CATEGORIES_COUPONS,
-            joinColumns = {
-                    @JoinColumn(name = ColumnNames.COUPON_ID, referencedColumnName = ColumnNames.ID,
-                            nullable = false, updatable = false)},
-            inverseJoinColumns = {
-                    @JoinColumn(name = ColumnNames.CATEGORY_ID, referencedColumnName = ColumnNames.ID,
-                            nullable = false, updatable = false)})
-    @ToString.Exclude
-    private List<Category> categories;
-
-    @ManyToMany
     @JoinTable(name = TableNames.PRODUCTS_COUPONS,
             joinColumns = {
                     @JoinColumn(name = ColumnNames.COUPON_ID, referencedColumnName = ColumnNames.ID,

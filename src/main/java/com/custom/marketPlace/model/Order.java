@@ -41,21 +41,21 @@ public class Order extends BaseEntity {
 
     @ManyToOne
     @ToString.Exclude
-    @JoinColumn(name = ColumnNames.PROFILE_ID)
-    private Profile customer;
+    @JoinColumn(name = ColumnNames.PROFILE_ID, nullable = false)
+    private Profile profile;
 
     @ManyToOne
     @ToString.Exclude
-    @JoinColumn(name = ColumnNames.ADDRESS_ID)
+    @JoinColumn(name = ColumnNames.ADDRESS_ID, nullable = false)
     private Address address;
 
     @Column(name = ColumnNames.SUM, nullable = false)
     private Double sumPrice;
 
-    @Column(name = ColumnNames.SHIPMENT_DATE, nullable = false)
+    @Column(name = ColumnNames.SHIPMENT_DATE)
     private LocalDate shipmentDate;
 
-    @Column(name = ColumnNames.DELIVERY_DATE, nullable = false)
+    @Column(name = ColumnNames.DELIVERY_DATE)
     private LocalDate deliveryDate;
 
     @Override

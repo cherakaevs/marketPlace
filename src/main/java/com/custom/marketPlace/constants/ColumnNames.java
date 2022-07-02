@@ -23,11 +23,11 @@ public interface ColumnNames {
     String STATUS = "order_status";
 
     /* Parameter */
-    String PARAMETER_NAME = "parameter";
+    String PARAMETER_VALUE = "value";
 
     /* Product */
     String PRODUCT_NAME = "product_name";
-    String AVERAGE_RATE = "average";
+    String AVERAGE_RATE = "average_rate";
     String AVAILABLE_COUNT = "count";
 
     /* Profile */
@@ -36,6 +36,7 @@ public interface ColumnNames {
 
     /* Category */
     String CATEGORY_NAME = "name";
+    String PARENT_CATEGORY_ID = "parent_category_id";
 
     /* Feedback */
     String MESSAGE = "message";

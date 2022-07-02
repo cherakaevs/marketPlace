@@ -1,15 +1,12 @@
 package com.custom.marketPlace.model;
 
-import com.custom.marketPlace.constants.AnnotationType;
 import com.custom.marketPlace.constants.ColumnNames;
 import com.custom.marketPlace.constants.TableNames;
 import lombok.*;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Objects;
-import java.util.UUID;
 
 @Entity
 @Table(name = TableNames.PARAMETER)
@@ -29,7 +26,7 @@ public class Parameter extends BaseEntity {
     @JoinColumn(name = ColumnNames.PRODUCT_ID, nullable = false)
     private Product product;
 
-    @Column(name = ColumnNames.PARAMETER_NAME)
+    @Column(name = ColumnNames.PARAMETER_VALUE, nullable = false)
     private String value;
 
     @Override

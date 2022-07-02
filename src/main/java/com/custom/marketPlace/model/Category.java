@@ -23,7 +23,7 @@ import java.util.UUID;
 @Builder
 public class Category extends BaseEntity {
 
-    @Column(name = ColumnNames.CATEGORY_NAME)
+    @Column(name = ColumnNames.CATEGORY_NAME, nullable = false)
     private String name;
 
     @ManyToMany
@@ -38,6 +38,7 @@ public class Category extends BaseEntity {
     private List<Attribute> attributes = new ArrayList<>();
 
     @ManyToOne
+    @JoinColumn(name = ColumnNames.PARENT_CATEGORY_ID)
     private Category parentCategory;
 
     @Override

@@ -24,22 +24,22 @@ import java.util.UUID;
 @Builder
 public class Address extends BaseEntity {
 
-    @Column(name = ColumnNames.COUNTRY)
+    @Column(name = ColumnNames.COUNTRY, nullable = false)
     private String country;
 
-    @Column(name = ColumnNames.CITY)
+    @Column(name = ColumnNames.CITY, nullable = false)
     private String city;
 
-    @Column(name = ColumnNames.STREET)
+    @Column(name = ColumnNames.STREET, nullable = false)
     private String street;
 
-    @Column(name = ColumnNames.HOUSE_NUMBER)
+    @Column(name = ColumnNames.HOUSE_NUMBER, nullable = false)
     private String houseNumber;
 
     @Column(name = ColumnNames.FLAT_NUMBER)
     private Long flatNumber;
 
-    @Column(name = ColumnNames.MAIL_INDEX)
+    @Column(name = ColumnNames.MAIL_INDEX, nullable = false)
     private Long mailIndex;
 
     @Override
