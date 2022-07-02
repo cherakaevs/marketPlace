@@ -29,7 +29,7 @@ public class Profile extends BaseEntity {
     @Column(name = ColumnNames.LAST_NAME, nullable = false)
     private String lastName;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = ColumnNames.PROFILE_ID)
     @ToString.Exclude
     private List<Order> ordersHistory;
@@ -55,7 +55,7 @@ public class Profile extends BaseEntity {
     @ToString.Exclude
     private List<Coupon> coupons;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = ColumnNames.PROFILE_ID)
     @ToString.Exclude
     private List<Feedback> feedbacks;
@@ -66,7 +66,7 @@ public class Profile extends BaseEntity {
     private User user;
 
     @ToString.Exclude
-    @OneToOne(mappedBy = MappedByFields.PROFILE)
+    @OneToOne(mappedBy = MappedByFields.PROFILE, cascade = CascadeType.ALL)
     private Bucket bucket;
 
     @Override

@@ -7,6 +7,7 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.lang.reflect.Type;
 import java.util.Objects;
 
 @Entity
@@ -28,7 +29,7 @@ public class User extends BaseEntity {
     @Transient
     private String passwordConfirm;
 
-    @OneToOne(mappedBy = MappedByFields.USER)
+    @OneToOne(mappedBy = MappedByFields.USER, cascade = CascadeType.ALL)
     private Profile profile;
 
     @Override

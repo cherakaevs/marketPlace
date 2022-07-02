@@ -26,7 +26,7 @@ public class Category extends BaseEntity {
     @Column(name = ColumnNames.CATEGORY_NAME, nullable = false)
     private String name;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = TableNames.CATEGORY_ATTRIBUTES,
             joinColumns = {
             @JoinColumn(name = ColumnNames.CATEGORY_ID, referencedColumnName = ColumnNames.ID,

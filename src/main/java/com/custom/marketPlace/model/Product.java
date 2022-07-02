@@ -34,12 +34,12 @@ public class Product extends BaseEntity {
     @JoinColumn(name = ColumnNames.CATEGORY_ID, nullable = false)
     private Category category;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = ColumnNames.PRODUCT_ID)
     @ToString.Exclude
     private List<Parameter> parameters = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = ColumnNames.PRODUCT_ID)
     @ToString.Exclude
     private List<Feedback> feedbacks = new ArrayList<>();
