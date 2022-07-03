@@ -1,5 +1,6 @@
 package com.custom.marketPlace.repo.impl;
 
+import com.custom.marketPlace.constants.Qualifiers;
 import com.custom.marketPlace.model.Bucket;
 import com.custom.marketPlace.repo.AbstractRepository;
 import org.springframework.stereotype.Repository;
@@ -7,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import java.util.UUID;
 
-@Repository
+@Repository(Qualifiers.BUCKET_REPO)
 public class BucketRepository extends AbstractRepository<Bucket> {
 
     public BucketRepository(EntityManager em) {
