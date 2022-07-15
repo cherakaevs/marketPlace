@@ -45,9 +45,6 @@ public class WebSecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/auth/**").permitAll()
-                .anyRequest().fullyAuthenticated()
-                .and()
-                .exceptionHandling()
-                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED));
+                .anyRequest().fullyAuthenticated();
     }
 }

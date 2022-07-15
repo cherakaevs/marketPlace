@@ -15,6 +15,10 @@ import javax.validation.Valid;
 @Controller
 public class ClientController {
 
+    @GetMapping("/api/admin")
+    public ResponseEntity<String> test() {
+        return ResponseEntity.ok("test");
+    }
 //    @PostMapping("/client/add")
 //    @PreAuthorize("hasRole('ADMIN')")
 //    public ResponseEntity<ClientInfo> addNewClient(@Valid ClientInfo clientInfo) {
