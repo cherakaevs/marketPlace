@@ -14,7 +14,7 @@ import javax.validation.Valid;
 @Slf4j
 @Controller
 public class ClientController {
-
+//
     @GetMapping("/api/admin")
     public ResponseEntity<String> test() {
         return ResponseEntity.ok("test");

@@ -45,4 +45,9 @@ public interface Qualifiers {
     /* Product */
     String PRODUCT_REPO = "product_repository";
     String PRODUCT_SERVICE = "product_service";
+
+    /*Manager*/
+    String MANAGER_CLIENT_REPO = "manager_client_repository";
+    String MANAGER_CLIENT_SERVICE = "manager_client_service";
+
 }

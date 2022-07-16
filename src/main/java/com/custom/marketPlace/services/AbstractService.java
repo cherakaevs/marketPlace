@@ -11,7 +11,7 @@ import java.util.UUID;
 @Slf4j
 public abstract class AbstractService<ObjectClass  extends BaseEntity> implements IService<ObjectClass> {
 
-    private final IRepository<ObjectClass> repository;
+    protected final IRepository<ObjectClass> repository;
 
     public AbstractService(IRepository<ObjectClass> repository) {
         this.repository = repository;

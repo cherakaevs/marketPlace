@@ -20,6 +20,12 @@ import java.util.Objects;
 @Builder
 public class User extends BaseEntity {
 
+    public User(String name, String password, String passwordConfirm){
+        this.username = name;
+        this.password = password;
+        this.passwordConfirm = passwordConfirm;
+    }
+
     @Column(name = ColumnNames.USERNAME, nullable = false, unique = true, length = 64)
     private String username;
 

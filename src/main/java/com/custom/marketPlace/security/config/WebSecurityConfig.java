@@ -44,7 +44,9 @@ public class WebSecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable();
         http
                 .authorizeRequests()
-                .antMatchers("/auth/**").permitAll()
+                .antMatchers("/registration").permitAll()
+                .antMatchers("/home").hasRole("USER")
+                .antMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().fullyAuthenticated();
     }
 }
