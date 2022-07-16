@@ -20,8 +20,11 @@ public class KeycloakConfiguration {
     @Bean
     public AuthzClient keycloakAuthzClient(KeycloakSpringBootProperties props) {
         org.keycloak.authorization.client.Configuration config = new org.keycloak.authorization.client.Configuration(
-                props.getAuthServerUrl(), props.getRealm(),
-                props.getResource(), props.getCredentials(), null);
+                props.getAuthServerUrl(),
+                props.getRealm(),
+                props.getResource(),
+                props.getCredentials(),
+                null);
         config.setBearerOnly(false);
         return AuthzClient.create(config);
     }

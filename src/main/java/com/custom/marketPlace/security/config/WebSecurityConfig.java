@@ -48,5 +48,6 @@ public class WebSecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
                 .antMatchers("/home").hasRole("USER")
                 .antMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().fullyAuthenticated();
+        // TODO: Наверное, кроме последней строчки ничего больше не нужно. Все эндпоинты лучше помечать аннотацией @PreAuthorize
     }
 }
