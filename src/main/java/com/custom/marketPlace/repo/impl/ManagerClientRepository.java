@@ -21,6 +21,6 @@ public class ManagerClientRepository extends AbstractRepository<ManagerClient> {
     }
 
     public ManagerClient findByClientId(String clientID){
-        return (ManagerClient) em.createNativeQuery("SELECT * FROM manager_client mc WHERE mc.clientId ='users-management-client' ").getSingleResult();
+        return (ManagerClient) em.createNativeQuery("SELECT * FROM manager_client mc WHERE mc.client_id = 'users-management-client'").getSingleResult();
     }
 }

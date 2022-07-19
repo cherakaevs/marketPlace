@@ -54,6 +54,18 @@ public interface ColumnNames {
     String ATTRIBUTE_NAME = "attribute_name";
     String POSSIBLE_VALUES = "possible_values";
 
+    /* Manager Client*/
+    String SECRET = "client_secret";
+    String CLIENT_ID = "client_id";
+
+    /*Token*/
+    String ACCESS_TOKEN = "access_token";
+    String EXPIRES_IN = "expires_in";
+    String REFRESH_EXPIRES_IN = "refresh_expires_in";
+    String TOKEN_TYPE = "token_type";
+    String NOT_BEFORE_POLICY = "not_before_policy";
+    String SCOPE = "scope";
+
     /* Foreign keys */
     String CATEGORY_ID = "category_id";
     String ATTRIBUTE_ID = "attribute_id";

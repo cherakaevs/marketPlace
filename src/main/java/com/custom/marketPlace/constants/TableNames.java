@@ -12,6 +12,7 @@ public interface TableNames {
     String ATTRIBUTE = "attribute";
     String PARAMETER = "parameter";
     String ORDER = "order_table";
+    String MANAGER_CLIENT = "manager_client";
 
     /* Mediation */
     String CATEGORY_ATTRIBUTES = "category_attributes";
