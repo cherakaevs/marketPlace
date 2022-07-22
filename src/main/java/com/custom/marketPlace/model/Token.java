@@ -1,10 +1,8 @@
 package com.custom.marketPlace.model;
 
-import com.custom.marketPlace.constants.ColumnNames;
 import lombok.*;
 import org.hibernate.Hibernate;
 
-import javax.persistence.Column;
 import java.util.Objects;
 
 

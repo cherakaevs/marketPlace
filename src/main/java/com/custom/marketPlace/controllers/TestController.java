@@ -1,11 +1,13 @@
 package com.custom.marketPlace.controllers;
 
+import com.custom.marketPlace.constants.Api;
 import com.custom.marketPlace.model.*;
 import com.custom.marketPlace.repo.impl.*;
+import com.custom.marketPlace.security.controllers.ClientController;
+import com.custom.marketPlace.security.model.ManagerClient;
 import com.custom.marketPlace.services.IService;
-import com.custom.marketPlace.services.impl.ManagerClientService;
+import com.custom.marketPlace.security.services.ManagerClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -17,14 +19,11 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Controller
 public class TestController {
@@ -65,41 +64,5 @@ public class TestController {
         return "home";
     }
 
-    @GetMapping("/registration")
-    public String registration(Model model){
-        return "registration";
-    }
 
-    @PostMapping("/registration")
-    public String registration(@RequestParam String name, @RequestParam String email, @RequestParam String password,
-                               @RequestParam String confirmPassword, Model model){
-        if(password.equals(confirmPassword)) {
-            Profile profile = Profile.builder().firstName(name).lastName(name).build();
-            profile.setId(UUID.randomUUID());
-            User user = User.builder().username(name).password(password).passwordConfirm(confirmPassword).build();
-            user.setProfile(profile);
-            user.setId(profile.getId());
-            profile.setUser(user);
-            userIService.saveEntity(user);
-
-            RestTemplate restTemplate = new RestTemplate();
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-
-
-            MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
-            map.add("grant_type","client_credentials");
-            map.add("client_id", "users-management-client");
-        //    map.add("client_secret", ((ManagerClientService)managerClientIService).getByClientId("users-management-client").getSecret());
-            map.add("client_secret", "gESOM0iaoaq7gsBamUlFaEgKgMD2JLjB");
-            HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(map, headers);
-
-
-            ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity("http://localhost:7432/realms/market-place/protocol/openid-connect/token",
-                    entity, String.class);
-            int a = 0;
-
-        }
-        return "redirect:/home";
-    }
 }

@@ -1,9 +1,9 @@
-package com.custom.marketPlace.services.impl;
+package com.custom.marketPlace.security.services;
 
-import com.custom.marketPlace.constants.Qualifiers;
-import com.custom.marketPlace.model.ManagerClient;
+import com.custom.marketPlace.database.constants.Qualifiers;
+import com.custom.marketPlace.security.model.ManagerClient;
 import com.custom.marketPlace.repo.IRepository;
-import com.custom.marketPlace.repo.impl.ManagerClientRepository;
+import com.custom.marketPlace.security.repo.ManagerClientRepository;
 import com.custom.marketPlace.services.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

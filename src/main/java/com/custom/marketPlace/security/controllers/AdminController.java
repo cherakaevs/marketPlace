@@ -1,6 +1,6 @@
 package com.custom.marketPlace.security.controllers;
 
-import com.custom.marketPlace.model.ManagerClient;
+import com.custom.marketPlace.security.model.ManagerClient;
 import com.custom.marketPlace.services.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

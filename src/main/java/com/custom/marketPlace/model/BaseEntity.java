@@ -1,7 +1,7 @@
 package com.custom.marketPlace.model;
 
-import com.custom.marketPlace.constants.AnnotationType;
-import com.custom.marketPlace.constants.ColumnNames;
+import com.custom.marketPlace.database.constants.AnnotationType;
+import com.custom.marketPlace.database.constants.ColumnNames;
 import lombok.*;
 import org.hibernate.annotations.Type;
 

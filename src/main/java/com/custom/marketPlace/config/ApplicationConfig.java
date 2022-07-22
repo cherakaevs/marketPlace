@@ -1,6 +1,6 @@
 package com.custom.marketPlace.config;
 
-import com.custom.marketPlace.constants.HibernateProps;
+import com.custom.marketPlace.database.constants.HibernateProps;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -12,9 +12,11 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
 
-import static com.custom.marketPlace.constants.DatabaseConstants.*;
+import static com.custom.marketPlace.database.constants.DatabaseConstants.*;
 
 @Configuration
 @ComponentScan(basePackages = "java")
@@ -50,7 +52,7 @@ public class ApplicationConfig {
         LocalContainerEntityManagerFactoryBean em
                 = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(getDataSource());
-        em.setPackagesToScan("com.custom.marketPlace.model");
+        em.setPackagesToScan(getPackagesToScan());
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
@@ -61,5 +63,13 @@ public class ApplicationConfig {
         em.setJpaProperties(jpaProperties);
 
         return em;
+    }
+
+    private String[] getPackagesToScan() {
+        List<String> packagesToScan = Arrays.asList(
+                "com.custom.marketPlace.model",
+                "com.custom.marketPlace.security.model"
+        );
+        return packagesToScan.toArray(String[]::new);
     }
 }

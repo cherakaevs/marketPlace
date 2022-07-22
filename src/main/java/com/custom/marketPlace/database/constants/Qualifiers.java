@@ -1,4 +1,4 @@
-package com.custom.marketPlace.constants;
+package com.custom.marketPlace.database.constants;
 
 public interface Qualifiers {
 
@@ -46,7 +46,7 @@ public interface Qualifiers {
     String PRODUCT_REPO = "product_repository";
     String PRODUCT_SERVICE = "product_service";
 
-    /*Manager*/
+    /* ManagerClient */
     String MANAGER_CLIENT_REPO = "manager_client_repository";
     String MANAGER_CLIENT_SERVICE = "manager_client_service";
 

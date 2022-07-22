@@ -1,6 +1,6 @@
 package com.custom.marketPlace.security.services;
 
-import com.custom.marketPlace.constants.SecurityConstants;
+import com.custom.marketPlace.security.constants.SecurityConstants;
 import com.custom.marketPlace.model.Token;
 import com.custom.marketPlace.security.model.LoginResponseMessage;
 import lombok.RequiredArgsConstructor;

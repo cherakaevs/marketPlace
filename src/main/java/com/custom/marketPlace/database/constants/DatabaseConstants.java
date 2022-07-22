@@ -1,4 +1,4 @@
-package com.custom.marketPlace.constants;
+package com.custom.marketPlace.database.constants;
 
 public interface DatabaseConstants {
     String POSTGRES_DIALECT = "org.hibernate.dialect.PostgreSQL94Dialect";

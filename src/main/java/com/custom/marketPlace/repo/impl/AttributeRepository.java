@@ -1,6 +1,6 @@
 package com.custom.marketPlace.repo.impl;
 
-import com.custom.marketPlace.constants.Qualifiers;
+import com.custom.marketPlace.database.constants.Qualifiers;
 import com.custom.marketPlace.model.Attribute;
 import com.custom.marketPlace.repo.AbstractRepository;
 import org.springframework.stereotype.Repository;

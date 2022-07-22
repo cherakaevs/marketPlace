@@ -1,13 +1,12 @@
 package com.custom.marketPlace.model;
 
-import com.custom.marketPlace.constants.ColumnNames;
-import com.custom.marketPlace.constants.MappedByFields;
-import com.custom.marketPlace.constants.TableNames;
+import com.custom.marketPlace.database.constants.ColumnNames;
+import com.custom.marketPlace.database.constants.MappedByFields;
+import com.custom.marketPlace.database.constants.TableNames;
 import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.lang.reflect.Type;
 import java.util.Objects;
 
 @Entity

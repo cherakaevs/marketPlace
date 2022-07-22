@@ -1,5 +1,6 @@
 package com.custom.marketPlace.security.config;
 
+import com.custom.marketPlace.constants.Api;
 import org.keycloak.adapters.KeycloakConfigResolver;
 import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
 import org.keycloak.adapters.springsecurity.KeycloakConfiguration;
@@ -44,10 +45,11 @@ public class WebSecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable();
         http
                 .authorizeRequests()
-                .antMatchers("/registration").permitAll()
+                .antMatchers(Api.REGISTRATION).permitAll()
                 .antMatchers("/home").hasRole("USER")
                 .antMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().fullyAuthenticated();
         // TODO: Наверное, кроме последней строчки ничего больше не нужно. Все эндпоинты лучше помечать аннотацией @PreAuthorize
+        // TODO: Нужны ли нам теперь страницы home и admin? если нет, давай удалим
     }
 }

@@ -1,4 +1,4 @@
-package com.custom.marketPlace.constants;
+package com.custom.marketPlace.database.constants;
 
 public interface TableNames {
     String ADDRESS = "address";
@@ -12,7 +12,6 @@ public interface TableNames {
     String ATTRIBUTE = "attribute";
     String PARAMETER = "parameter";
     String ORDER = "order_table";
-    String MANAGER_CLIENT = "manager_client";
 
     /* Mediation */
     String CATEGORY_ATTRIBUTES = "category_attributes";
@@ -20,4 +19,7 @@ public interface TableNames {
     String PRODUCTS_ORDERS = "products_orders";
     String PRODUCTS_BUCKETS = "buckets_products";
     String PRODUCTS_COUPONS = "products_coupons";
+
+    /* Security */
+    String MANAGER_CLIENT = "manager_client";
 }

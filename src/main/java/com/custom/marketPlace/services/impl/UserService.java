@@ -1,6 +1,6 @@
 package com.custom.marketPlace.services.impl;
 
-import com.custom.marketPlace.constants.Qualifiers;
+import com.custom.marketPlace.database.constants.Qualifiers;
 import com.custom.marketPlace.model.User;
 import com.custom.marketPlace.repo.IRepository;
 import com.custom.marketPlace.services.AbstractService;

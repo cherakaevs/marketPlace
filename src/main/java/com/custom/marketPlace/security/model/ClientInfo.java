@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+/* TODO: Это шо? Для чего это мы будем использовать? Если не нужно, давай сразу удалим" */
 @Data
 @Builder
 @AllArgsConstructor

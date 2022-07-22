@@ -1,7 +1,7 @@
 package com.custom.marketPlace.model;
 
-import com.custom.marketPlace.constants.ColumnNames;
-import com.custom.marketPlace.constants.TableNames;
+import com.custom.marketPlace.database.constants.ColumnNames;
+import com.custom.marketPlace.database.constants.TableNames;
 import lombok.*;
 import org.hibernate.Hibernate;
 

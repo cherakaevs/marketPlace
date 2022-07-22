@@ -1,4 +1,4 @@
-package com.custom.marketPlace.constants;
+package com.custom.marketPlace.database.constants;
 
 public interface HibernateProps {
     String AUTO_DDL_EXECUTION = "hibernate.hbm2ddl.auto";
