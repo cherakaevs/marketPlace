@@ -58,14 +58,6 @@ public interface ColumnNames {
     String SECRET = "client_secret";
     String CLIENT_ID = "client_id";
 
-    /*Token*/ /* TODO: Це шо? Зачем? Токен не сохраняется в базе. Это временный пропуск. Максимум кешировать, не более */
-    String ACCESS_TOKEN = "access_token";
-    String EXPIRES_IN = "expires_in";
-    String REFRESH_EXPIRES_IN = "refresh_expires_in";
-    String TOKEN_TYPE = "token_type";
-    String NOT_BEFORE_POLICY = "not_before_policy";
-    String SCOPE = "scope";
-
     /* Foreign keys */
     String CATEGORY_ID = "category_id";
     String ATTRIBUTE_ID = "attribute_id";

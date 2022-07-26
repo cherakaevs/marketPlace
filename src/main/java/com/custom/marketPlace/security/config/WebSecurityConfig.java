@@ -46,10 +46,6 @@ public class WebSecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers(Api.REGISTRATION).permitAll()
-                .antMatchers("/home").hasRole("USER")
-                .antMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().fullyAuthenticated();
-        // TODO: Наверное, кроме последней строчки ничего больше не нужно. Все эндпоинты лучше помечать аннотацией @PreAuthorize
-        // TODO: Нужны ли нам теперь страницы home и admin? если нет, давай удалим
     }
 }

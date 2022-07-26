@@ -2,9 +2,10 @@ package com.custom.marketPlace.security.services;
 
 import com.custom.marketPlace.security.constants.SecurityConstants;
 import com.custom.marketPlace.model.Token;
-import com.custom.marketPlace.security.model.LoginResponseMessage;
+import com.custom.marketPlace.security.model.TokenInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONObject;
 import org.keycloak.authorization.client.AuthorizationDeniedException;
 import org.keycloak.authorization.client.AuthzClient;
 import org.keycloak.authorization.client.util.HttpResponseException;
@@ -25,12 +26,12 @@ public class AuthService {
 
     private final AuthzClient authzClient;
 
-    public LoginResponseMessage login(String email, String pass) throws Exception {
+    public TokenInfo login(String email, String pass) throws Exception {
         log.info("START login for user {}", email);
         try {
             AuthorizationResponse response = authzClient.authorization(email, pass)
                     .authorize();
-            LoginResponseMessage result = LoginResponseMessage.builder()
+            TokenInfo result = TokenInfo.builder()
                     .tokenType(response.getTokenType())
                     .token(response.getToken()).build();
             log.info("FINISH login for user {} successfully", email);
@@ -73,10 +74,30 @@ public class AuthService {
         map.add(SecurityConstants.CLIENT_SECRET, secret);
         HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(map, headers);
 
+
+
         ResponseEntity<Token> responseEntity = restTemplate.postForEntity("http://localhost:7432/realms/market-place/protocol/openid-connect/token",
                 entity, Token.class);
 
         return responseEntity.getBody();
+    }
+
+    public void createUser(String firstName, String lastName, String email, String token){
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        JSONObject json = new JSONObject();
+        json.put("firstName", firstName);
+        json.put("lastName", lastName);
+        json.put("email", email);
+
+        headers.add("Authorization", "Bearer " + token);
+
+        HttpEntity<JSONObject> entity = new HttpEntity<>(json, headers);
+
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://localhost:7432/admin/realms/market-place/users",
+                entity, String.class);
     }
 
 

@@ -16,4 +16,9 @@ public interface SecurityConstants {
 
     /* Password */
     String USERNAME = "username";
+
+    /* TokenInfo */
+    String TOKEN = "token";
+    String REFRESH_TOKEN = "refreshToken";
+    String TOKEN_TYPE = "tokenType";
 }

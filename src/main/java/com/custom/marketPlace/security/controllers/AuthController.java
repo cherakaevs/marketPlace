@@ -2,8 +2,9 @@ package com.custom.marketPlace.security.controllers;
 
 import com.custom.marketPlace.constants.Api;
 import com.custom.marketPlace.model.Profile;
+import com.custom.marketPlace.model.Token;
 import com.custom.marketPlace.model.User;
-import com.custom.marketPlace.security.model.LoginResponseMessage;
+import com.custom.marketPlace.security.model.TokenInfo;
 import com.custom.marketPlace.security.model.ManagerClient;
 import com.custom.marketPlace.security.services.AuthService;
 import com.custom.marketPlace.security.services.ManagerClientService;
@@ -13,17 +14,13 @@ import org.springframework.http.*;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.UUID;
 
 import static com.custom.marketPlace.security.constants.SecurityClientManagers.USER_MANAGEMENT_CLIENT;
-import static org.keycloak.OAuth2Constants.*;
 
 @Controller
 public class AuthController {
@@ -59,34 +56,20 @@ public class AuthController {
             profile.setUser(user);
             userIService.saveEntity(user);
 
-            // TODO: получение токена лучше вынести в сервис какой-нибудь. Бачу сервис AuthService. Можно оттуда счиздить
-            RestTemplate restTemplate = new RestTemplate();
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-
             ManagerClient usersManager =
                     ((ManagerClientService) managerClientIService).getByClientId(USER_MANAGEMENT_CLIENT);
-
-            MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
-            map.add(GRANT_TYPE, CLIENT_CREDENTIALS);
-            map.add(CLIENT_ID, usersManager.getClientId());
-            map.add(CLIENT_SECRET, usersManager.getSecret());
-
-            HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(map, headers);
-            // TODO: получение токена лучше вынести в сервис какой-нибудь. Бачу сервис AuthService. Можно оттуда счиздить
-
-            ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity("http://localhost:7432/realms/market-place/protocol/openid-connect/token",
-                    entity, String.class);
-            // ============================================================
+            Token token = authService.getClientToken(usersManager.getClientId(), usersManager.getSecret());
+            authService.createUser(user.getUsername(), user.getUsername(), user.getUsername(), token.getAccess_token());
         }
         return "redirect:/home";
     }
 
     @PostMapping("/auth/login")
     @PreAuthorize("permitAll()")
-    public ResponseEntity<LoginResponseMessage> login(@RequestParam("email") String email, @RequestParam("pass") String pass) throws Exception {
-        LoginResponseMessage responseMessage = authService.login(email, pass);
+    public ResponseEntity<TokenInfo> login(@RequestParam("email") String email, @RequestParam("pass") String pass) throws Exception {
+        TokenInfo responseMessage = authService.login(email, pass);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(responseMessage);
     }
+
 }

@@ -1,25 +1,13 @@
 package com.custom.marketPlace.controllers;
 
-import com.custom.marketPlace.constants.Api;
 import com.custom.marketPlace.model.*;
 import com.custom.marketPlace.repo.impl.*;
-import com.custom.marketPlace.security.controllers.ClientController;
 import com.custom.marketPlace.security.model.ManagerClient;
 import com.custom.marketPlace.services.IService;
-import com.custom.marketPlace.security.services.ManagerClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
