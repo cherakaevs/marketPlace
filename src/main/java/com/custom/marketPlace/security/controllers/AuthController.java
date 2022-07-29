@@ -59,7 +59,7 @@ public class AuthController {
             ManagerClient usersManager =
                     ((ManagerClientService) managerClientIService).getByClientId(USER_MANAGEMENT_CLIENT);
             Token token = authService.getClientToken(usersManager.getClientId(), usersManager.getSecret());
-            authService.createUser(user.getUsername(), user.getUsername(), user.getUsername(), token.getAccess_token());
+            authService.createUser("test", "test", email, name, token.getAccess_token());
         }
         return "redirect:/home";
     }

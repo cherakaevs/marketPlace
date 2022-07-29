@@ -1,8 +1,10 @@
 package com.custom.marketPlace.security.services;
 
+import com.custom.marketPlace.constants.Api;
 import com.custom.marketPlace.security.constants.SecurityConstants;
 import com.custom.marketPlace.model.Token;
 import com.custom.marketPlace.security.model.TokenInfo;
+import com.fasterxml.jackson.databind.JsonNode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
@@ -18,6 +20,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Map;
 
 @Slf4j
 @Service
@@ -82,7 +86,7 @@ public class AuthService {
         return responseEntity.getBody();
     }
 
-    public void createUser(String firstName, String lastName, String email, String token){
+    public void createUser(String firstName, String lastName, String email, String username, String token){
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -91,12 +95,13 @@ public class AuthService {
         json.put("firstName", firstName);
         json.put("lastName", lastName);
         json.put("email", email);
+        json.put("username", username);
 
         headers.add("Authorization", "Bearer " + token);
 
-        HttpEntity<JSONObject> entity = new HttpEntity<>(json, headers);
+        HttpEntity<Map<String, Object>> entity = new HttpEntity<>(json.toMap(), headers);
 
-        ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://localhost:7432/admin/realms/market-place/users",
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity(Api.CREATE_USER_KEYCLOAK,
                 entity, String.class);
     }
 
