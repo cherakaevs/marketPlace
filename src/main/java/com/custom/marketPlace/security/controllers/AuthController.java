@@ -1,19 +1,21 @@
 package com.custom.marketPlace.security.controllers;
 
 import com.custom.marketPlace.constants.Api;
+import com.custom.marketPlace.constants.RequestParams;
+import com.custom.marketPlace.constants.Views;
 import com.custom.marketPlace.model.Profile;
-import com.custom.marketPlace.model.Token;
 import com.custom.marketPlace.model.User;
-import com.custom.marketPlace.security.model.TokenInfo;
+import com.custom.marketPlace.security.constants.PreAuthorizeRoles;
 import com.custom.marketPlace.security.model.ManagerClient;
+import com.custom.marketPlace.security.model.OAuth2Token;
 import com.custom.marketPlace.security.services.AuthService;
 import com.custom.marketPlace.security.services.ManagerClientService;
 import com.custom.marketPlace.services.IService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,13 +41,17 @@ public class AuthController {
     }
 
     @GetMapping(Api.REGISTRATION)
-    public String registration(Model model){
-        return "registration";
+    @PreAuthorize(PreAuthorizeRoles.ALL)
+    public String registration(){
+        return Views.REGISTRATION;
     }
 
     @PostMapping(Api.REGISTRATION)
-    public String registration(@RequestParam String name, @RequestParam String email, @RequestParam String password,
-                               @RequestParam String confirmPassword, Model model){
+    @PreAuthorize(PreAuthorizeRoles.ALL)
+    public String registration(@RequestParam String name,
+                               @RequestParam String email,
+                               @RequestParam String password,
+                               @RequestParam String confirmPassword){
         if(password.equals(confirmPassword)) {
 
             Profile profile = Profile.builder().firstName(name).lastName(name).build();
@@ -58,16 +64,17 @@ public class AuthController {
 
             ManagerClient usersManager =
                     ((ManagerClientService) managerClientIService).getByClientId(USER_MANAGEMENT_CLIENT);
-            Token token = authService.getClientToken(usersManager.getClientId(), usersManager.getSecret());
-            authService.createUser("test", "test", email, name, token.getAccess_token());
+            OAuth2Token token = authService.getClientToken(usersManager.getClientId(), usersManager.getSecret());
+            authService.createUser(name, name, email, name, token.getAccessToken());
         }
-        return "redirect:/home";
+        return Views.REDIRECT_TO_HOME;
     }
 
-    @PostMapping("/auth/login")
-    @PreAuthorize("permitAll()")
-    public ResponseEntity<TokenInfo> login(@RequestParam("email") String email, @RequestParam("pass") String pass) throws Exception {
-        TokenInfo responseMessage = authService.login(email, pass);
+    @PostMapping(Api.LOGIN)
+    @PreAuthorize(PreAuthorizeRoles.ALL)
+    public ResponseEntity<OAuth2Token> login(@RequestParam(RequestParams.EMAIL) String email,
+                                             @RequestParam(RequestParams.PASSWORD) String pass) throws Exception {
+        OAuth2Token responseMessage = authService.login(email, pass);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(responseMessage);
     }

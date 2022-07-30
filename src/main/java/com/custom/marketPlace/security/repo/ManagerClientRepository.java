@@ -2,8 +2,8 @@ package com.custom.marketPlace.security.repo;
 
 import com.custom.marketPlace.database.constants.Qualifiers;
 import com.custom.marketPlace.database.constants.QueriesNames;
-import com.custom.marketPlace.security.model.ManagerClient;
 import com.custom.marketPlace.repo.AbstractRepository;
+import com.custom.marketPlace.security.model.ManagerClient;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
