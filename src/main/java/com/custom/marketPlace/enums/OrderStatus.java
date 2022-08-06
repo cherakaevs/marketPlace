@@ -1,6 +1,6 @@
 package com.custom.marketPlace.enums;
 
-public enum Status {
+public enum OrderStatus {
     CONFIRMED,
     SHIPPED,
     COMPLETED,

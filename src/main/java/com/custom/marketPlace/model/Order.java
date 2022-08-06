@@ -2,7 +2,7 @@ package com.custom.marketPlace.model;
 
 import com.custom.marketPlace.database.constants.ColumnNames;
 import com.custom.marketPlace.database.constants.TableNames;
-import com.custom.marketPlace.enums.Status;
+import com.custom.marketPlace.enums.OrderStatus;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -23,7 +23,7 @@ import java.util.Objects;
 public class Order extends BaseEntity {
 
     @Column(name = ColumnNames.STATUS, nullable = false)
-    private Status status;
+    private OrderStatus status;
 
     @ManyToMany
     @JoinTable(name = TableNames.PRODUCTS_ORDERS,
